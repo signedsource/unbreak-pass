@@ -1,0 +1,13 @@
+{
+  "name": "unbreak-pass",
+  "version": "1.0.0",
+  "description": "Unbreak your passwords, storing them in a secure way",
+  "main": "app.js",
+  "repository": "https://github.com/signedsource/unbreak-pass",
+  "author": "Latitud's Dev",
+  "license": "GPL-3.0-or-later",
+  "private": false,
+  "dependencies": {
+    "typescript": "^4.4.3"
+  }
+}
