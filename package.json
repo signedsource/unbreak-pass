@@ -2,12 +2,26 @@
   "name": "unbreak-pass",
   "version": "1.0.0",
   "description": "Unbreak your passwords, storing them in a secure way",
-  "main": "app.js",
+  "main": "dist/app.js",
   "repository": "https://github.com/signedsource/unbreak-pass",
   "author": "Latitud's Dev",
   "license": "GPL-3.0-or-later",
   "private": false,
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc & yarn start",
+    "start": "cd dist & node app"
+  },
   "dependencies": {
+    "graceful-fs": "^4.2.8",
+    "lodash": "^4.17.21",
+    "prompts": "^2.4.2",
     "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/graceful-fs": "^4.1.5",
+    "@types/lodash": "^4.14.175",
+    "@types/prompts": "^2.0.14",
+    "@types/typescript": "^2.0.0"
   }
 }
