@@ -1,25 +1,30 @@
 import fs, { PathLike } from 'graceful-fs';
+import _ from "lodash";
 
 export default class Database {
-    insidePath: PathLike;
+    insidePath: string;
     outsidePath: string;
 
-    constructor(insidePath: PathLike, outsidePath: string) {
-        this.insidePath = insidePath;
-        this.outsidePath = outsidePath;
+    constructor(insidePath: string, outsidePath: string) {
+        console.log(insidePath);
+        /** this.insidePath = insidePath;
+        this.outsidePath = outsidePath; */
 
-        if (!fs.existsSync(insidePath)) fs.writeFileSync(insidePath, '{}');
+        fs.writeFileSync(insidePath, '{}');
+
+        // if (!fs.existsSync(insidePath)) fs.writeFileSync(insidePath, '{}');
     }
 
-    async get() {
-
+    get(key: string) {
+        const data: object = require(this.insidePath)
+        return _.get(data, key);
     }
 
     async list() {
         
     }
 
-    async set() {
-
+    async set(key: string, value: string) {
+        const data: object = require(this.insidePath)
     }
 }

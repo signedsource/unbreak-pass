@@ -1,6 +1,12 @@
 import prompts from "prompts";
+import Database from "./src/data/Database.js";
+import Password from "./src/handlers/Password.js";
+import config from "./src/utils/Config.js";
+import logger from "./src/utils/Logger.js";
 
 (async () => {
+    const db: Database = new Database(config.insidePath, config.outsidePath);
+
     const initMenu = await prompts({
         type: 'select',
         name: 'value',
@@ -15,15 +21,16 @@ import prompts from "prompts";
 
     switch (initMenu.value) {
         case "add_pw":
-            
+            new Password(db, "", "", "").addPw();
             break;
         case "remove_pw":
-            // List them the platforms, make them introduce the secure key for the password, and then remove it if its valid
+            new Password(db, "", "", "").removePw();
             break;
         case "decrypt_pw":
-            // List them the platforms, make them introduce the secure key for the password, and then decrypt the password if its valid
+            new Password(db, "", "", "").decryptPw();
             break;
         case "close":
+            logger.info("Goodbye my man, hope your passwords don't get hacked.")
             process.exit(0);
             break;
     }
